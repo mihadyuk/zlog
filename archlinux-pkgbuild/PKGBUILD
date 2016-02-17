@@ -1,0 +1,26 @@
+
+pkgname=zlog
+_origver=1.2.12
+pkgver=1.2.12
+pkgrel=1
+pkgdesc="zlog is a reliable, high-performance, thread safe, flexible, clear-model, pure C logging library"
+arch=('i686' 'x86_64' 'armv7h')
+url="https://hardysimpson.github.io/zlog/"
+license=('LGPL v2.1')
+#depends=('gcc-libs')
+#source=("https://github.com/HardySimpson/zlog/archive/latest-stable.tar.gz")
+#source=("zlog-latest-stable.tar.gz")
+#md5sums=('d72ad566cb6f911a70bc5f73e5573d26')
+source=("git+https://github.com/mihadyuk/zlog.git#branch=master")
+md5sums=('SKIP')
+
+package() {
+  cd ${srcdir}/zlog
+
+  make PREFIX=${pkgdir}/usr/local install
+}
+
+build() {
+  cd ${srcdir}/zlog
+  make
+}
